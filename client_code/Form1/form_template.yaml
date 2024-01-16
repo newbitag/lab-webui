@@ -12,3 +12,16 @@ components:
   properties: {}
   name: navbar_links
   layout_properties: {slot: nav-right}
+- name: navigation_bar
+  properties: {}
+  type: ColumnPanel
+  layout_properties: {slot: left-nav}
+  components:
+  - name: home_button
+    properties: {text: Home, role: outlined-button}
+    type: Button
+    layout_properties: {grid_position: 'JMZFPM,TUTMTW'}
+- name: label_1
+  properties: {text: NewbIT Lab Manager}
+  type: Label
+  layout_properties: {slot: title}

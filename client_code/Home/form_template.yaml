@@ -1,0 +1,7 @@
+container: {type: ColumnPanel}
+components:
+- name: label_user
+  properties: {}
+  type: Label
+  layout_properties: {grid_position: 'BVULNP,VCDTEB'}
+is_package: true
