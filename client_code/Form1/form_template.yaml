@@ -1,7 +1,7 @@
 is_package: true
 container:
   type: HtmlTemplate
-  properties: {html: '@theme:standard-page.html'}
+  properties: {html: '@theme:standard-page.html', background: ''}
 components:
 - type: ColumnPanel
   properties: {col_widths: '{}'}
@@ -9,9 +9,19 @@ components:
   layout_properties: {slot: default}
   components: []
 - type: FlowPanel
-  properties: {}
+  properties: {background: ''}
   name: navbar_links
   layout_properties: {slot: nav-right}
+  components:
+  - name: user_banner
+    properties: {background: ''}
+    type: Label
+    layout_properties: {}
+  - name: logout_button
+    properties: {text: Logout}
+    type: Button
+    layout_properties: {}
+    event_bindings: {click: logout_button_handler}
 - name: navigation_bar
   properties: {}
   type: ColumnPanel
@@ -21,7 +31,8 @@ components:
     properties: {text: Home, role: outlined-button}
     type: Button
     layout_properties: {grid_position: 'JMZFPM,TUTMTW'}
+    event_bindings: {click: home_button_clicked}
 - name: label_1
-  properties: {text: NewbIT Lab Manager}
+  properties: {text: NewbIT Lab Manager, background: ''}
   type: Label
   layout_properties: {slot: title}

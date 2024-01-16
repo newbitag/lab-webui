@@ -1,0 +1,22 @@
+container: {type: ColumnPanel}
+components:
+- name: linear_panel_1
+  properties: {}
+  type: LinearPanel
+  layout_properties: {grid_position: 'BXXPCV,SJMWAX'}
+  components:
+  - name: vm_tabs
+    properties: {}
+    type: FlowPanel
+    components:
+    - name: button_overview
+      properties: {text: Overview, enabled: true, bold: false, background: '', foreground: '',
+        role: elevated-button}
+      type: Button
+      layout_properties: {}
+      event_bindings: {click: overview_button_clicked}
+      data_bindings: []
+  - name: content_panel
+    properties: {}
+    type: FlowPanel
+is_package: true
