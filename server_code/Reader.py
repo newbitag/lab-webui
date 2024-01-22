@@ -28,3 +28,9 @@ def get_project_vms(project_name):
 def get_resources():
   resources = {'cpu_total':32,'cpu_used':14.5,'memory_total':128,'memory_used':48.3}
   return resources
+
+@anvil.server.callable
+def get_web_views(project):
+  web_views = {"Web Server":"https://google.com","Test":"10.0.0.3:80"}
+  return web_views
+  

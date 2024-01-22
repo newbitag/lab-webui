@@ -331,5 +331,5 @@ color_scheme:
   - {name: Primary Overlay 1, color: 'rgba(208, 188, 255, 0.05)'}
   - {name: Primary Overlay 2, color: 'rgba(208, 188, 255, 0.08)'}
   - {name: Primary Overlay 3, color: 'rgba(208, 188, 255, 0.11)'}
-  - {name: Shutdown, color: '#002200'}
-  - {name: Started, color: '#220000'}
+  - {name: Shutdown, color: '#330000'}
+  - {name: Started, color: '#003300'}
