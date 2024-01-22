@@ -18,3 +18,6 @@ import anvil.server
 #   print("Hello, " + name + "!")
 #   return 42
 #
+@anvil.server.callable
+def remove_project(project):
+  pass

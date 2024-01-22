@@ -39,8 +39,9 @@ class Home(HomeTemplate):
     projects = anvil.server.call('get_user_projects',anvil.users.get_user()['email'])
     for project in projects:
       list_of_vms = anvil.server.call('get_project_vms',project)
-      project_panel = LinearPanel()
+      project_panel = LinearPanel(role='tonal-card')
       project_headlinepanel = FlowPanel(align='left')
+      project_headlinepanel.tag.project = project
       project_label = Label(text=project,font_size=16)
       project_delete_button = Button(text="Delete Project")
       project_delete_button.add_event_handler('click',self.delete_project)
@@ -50,7 +51,8 @@ class Home(HomeTemplate):
       project_vm_panel.role = 'outlined-card'
       for vm in list_of_vms.keys():
         vm_panel = FlowPanel(align='left',role='elevated-card')
-        vm_panel.tag = {'project':project,'vm':vm}
+        vm_panel.tag.project = project
+        vm_panel.tag.vm = vm
         vm_label = Label(text=vm)
         vm_start_button = Button(text="Start",role='tonal-button')
         vm_shutdown_button = Button(text="Shutdown",role='tonal-button')
@@ -80,19 +82,25 @@ class Home(HomeTemplate):
 
   def delete_project(self, **event_args):
     sender_parent_tags = event_args['sender'].parent.tag
-    c = confirm("Do you really want to delete %s"%(sender_parent_tags['project']))
+    c = confirm("Do you really want to delete %s"%(sender_parent_tags.project))
     if c:
-      print(sender_parent_tags)
+      anvil.server.call('remove_project',sender_parent_tags.project)
 
   
   def start_vm_clicked(self, **event_args):
     sender_parent_tags = event_args['sender'].parent.tag
     print(sender_parent_tags)
+    anvil.server.call('start_vm',sender_parent_tags.project,sender_parent_tags.vm)
+    self.refresh_data_bindings()
 
   def stop_vm_clicked(self, **event_args):
     sender_parent_tags = event_args['sender'].parent.tag
     print(sender_parent_tags)
+    anvil.server.call('stop_vm',sender_parent_tags.project,sender_parent_tags.vm)
+    self.refresh_data_bindings()
 
   def destroy_vm_clicked(self, **event_args):
     sender_parent_tags = event_args['sender'].parent.tag
     print(sender_parent_tags)
+    anvil.server.call('stop_vm',sender_parent_tags.project,sender_parent_tags.vm,True)
+    self.refresh_data_bindings()
