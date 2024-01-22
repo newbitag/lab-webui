@@ -35,16 +35,17 @@ class Home(HomeTemplate):
             )
     ]
 
+    self.projects_panel.clear()
     projects = anvil.server.call('get_user_projects',anvil.users.get_user()['email'])
     for project in projects:
       list_of_vms = anvil.server.call('get_project_vms',project)
       project_panel = LinearPanel()
       project_label = Label(text=project,font_size=16)
       project_vm_panel = ColumnPanel()
+      project_vm_panel.role = 'outlined-card'
       for vm in list_of_vms:
         vm_label = Label(text=vm)
         project_vm_panel.add_component(vm_label)
       project_panel.add_component(project_label)
       project_panel.add_component(project_vm_panel)
-      self.projects_panel.clear()
       self.projects_panel.add_component(project_panel)
