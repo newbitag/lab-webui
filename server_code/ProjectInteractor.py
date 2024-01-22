@@ -12,19 +12,9 @@ import anvil.server
 # To allow anvil.server.call() to call functions here, we mark
 # them with @anvil.server.callable.
 # Here is an example - you can replace it with your own:
-
-@anvil.server.callable
-def get_user_projects(user_email):
-  projects = ['demo1','demo2','demo3']
-  return projects
-  
-@anvil.server.callable
-def get_project_vms(project_name):
-  vms = {"vm1" : False,"vm2": True,"vm3":True}
-  return vms
-
-
-@anvil.server.callable
-def get_resources():
-  resources = {'cpu_total':32,'cpu_used':14.5,'memory_total':128,'memory_used':48.3}
-  return resources
+#
+# @anvil.server.callable
+# def say_hello(name):
+#   print("Hello, " + name + "!")
+#   return 42
+#

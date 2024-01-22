@@ -43,9 +43,17 @@ class Home(HomeTemplate):
       project_label = Label(text=project,font_size=16)
       project_vm_panel = ColumnPanel()
       project_vm_panel.role = 'outlined-card'
-      for vm in list_of_vms:
+      for vm in list_of_vms.keys():
+        vm_panel = FlowPanel(align='left')
+        vm_panel.tag = {'project':project,'vm':vm}
         vm_label = Label(text=vm)
-        project_vm_panel.add_component(vm_label)
+        
+        if list_of_vms[vm]:
+          vm_panel.background = 'green'
+        else:
+          vm_panel.background = 'red'
+        vm_panel.add_component(vm_label)
+        project_vm_panel.add_component(vm_panel)
       project_panel.add_component(project_label)
       project_panel.add_component(project_vm_panel)
       self.projects_panel.add_component(project_panel)
