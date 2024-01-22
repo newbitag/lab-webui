@@ -24,5 +24,5 @@ def start_vm(project,vm):
   pass
   
 @anvil.server.callable
-def stop_vm(project,vm):
+def stop_vm(project,vm,force=False):
   pass

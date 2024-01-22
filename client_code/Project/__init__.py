@@ -18,7 +18,7 @@ class Project(ProjectTemplate):
     # Any code you write here will run before the form opens.
     self.project_name = project_name
     list_of_vms = anvil.server.call('get_project_vms',project_name)
-    for vm in list_of_vms.keys:
+    for vm in list_of_vms.keys():
       button_tmp = Button(text=vm)
       self.vm_tabs.add_component(button_tmp)
       button_tmp.add_event_handler('click',self.vm_button_clicked)
