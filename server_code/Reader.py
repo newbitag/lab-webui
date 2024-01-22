@@ -22,3 +22,9 @@ def get_user_projects(user_email):
 def get_project_vms(project_name):
   vms = ["vm1","vm2","vm3"]
   return vms
+
+
+@anvil.server.callable
+def get_resources():
+  resources = {'cpu_total':32,'cpu_used':14.5,'memory_total':128,'memory_used':48.3}
+  return resources
